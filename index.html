@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCSP-Site - 豆腐玩原神玩的</title>
+    <style>
+        body, h1, h2, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background: #555;
+            color: #fff;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            background: #555;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover, nav .active {
+            background: #777;
+        }
+        .main-content {
+            padding: 20px 0;
+        }
+        section {
+            display: none;
+            padding: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        section.active {
+            display: block;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        @media (min-width: 768px) {
+            nav ul li {
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MCSP-Site</h1>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#" class="active" onclick="switchSection('home')">首页</a></li>
+                <li><a href="#" onclick="switchSection('about')">About</a></li>
+                <li><a href="#" onclick="switchSection('community')">对豆腐的评价</a></li>
+                <li><a href="#" onclick="switchSection('gallery')">无聊展示</a></li>
+                <li><a href="#" onclick="switchSection('contact')">不理解</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="main-content container">
+        <section id="home" class="active">
+            <h2>首页</h2>
+            <p>欢迎来到MCSP-Site，有不理解无聊写的</p>
+        </section>
+        <section id="about">
+            <h2>关于我们</h2>
+            <p>啥也没有，看啥看。</p>
+        </section>
+        <section id="community">
+            <h2>对豆腐的评价</h2>
+            <p>玩原神玩的</p>
+        </section>
+        <section id="gallery">
+            <h2>无聊展示</h2>
+            <p>我真的很无聊，孩子们。</p>
+        </section>
+        <section id="contact">
+            <h2>不理解</h2>
+            <p>没有技术含量的造物</p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 MCSP-Site. All rights reserved.</p>
+    </footer>
+    <script>
+        function switchSection(sectionId) {
+            var sections = document.querySelectorAll('section');
+            var navLinks = document.querySelectorAll('nav a');
+            
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].classList.remove('active');
+            }
+            
+            document.getElementById(sectionId).style.display = 'block';
+            document.querySelector('nav a[href="#' + sectionId + '"]').classList.add('active');
+        }
+    </script>
+</body>
+</html>
+<!-- 恭喜你发现这个 没有技术含量的网站 -->
