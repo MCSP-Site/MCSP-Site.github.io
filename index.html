@@ -8,131 +8,236 @@
         body, h1, h2, p, ul {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
+            background-color: #f5f5f5;
+            position: relative;
         }
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: auto;
-            overflow: hidden;
         }
+
         header {
             background: #333;
             color: #fff;
             padding: 20px 0;
             text-align: center;
         }
+
         header h1 {
             margin: 0;
+            font-size: 2rem;
         }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 1020;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
         nav {
-            background: #555;
+            background: #333;
             color: #fff;
-            padding: 10px 0;
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: left 0.3s;
+            padding-top: 20px;
+            overflow-y: auto;
+            z-index: 1010;
         }
+
         nav ul {
             list-style: none;
-            text-align: center;
         }
-        nav ul li {
-            display: inline;
-        }
-        nav a {
+
+        nav ul li a {
             text-decoration: none;
             color: #fff;
-            background: #555;
-            padding: 10px 15px;
-            display: inline-block;
+            display: block;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+            transition: background 0.3s;
         }
-        nav a:hover, nav .active {
-            background: #777;
+
+        nav ul li a:hover {
+            background-color: #555;
         }
+
+        nav ul li a.active {
+            background-color: #555;
+        }
+
         .main-content {
-            padding: 20px 0;
+            padding: 20px;
         }
+
         section {
             display: none;
             padding: 20px;
-            border-bottom: 1px solid #eaeaea;
+            background-color: #fff;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         section.active {
             display: block;
         }
+
         footer {
             background: #333;
             color: #fff;
             text-align: center;
             padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
-        @media (min-width: 768px) {
-            nav ul li {
-                display: inline-block;
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
             }
         }
     </style>
 </head>
 <body>
+    <div class="overlay" onclick="closeMenu()"></div>
     <header>
         <div class="container">
             <h1>MCSP-Site</h1>
         </div>
     </header>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#" class="active" onclick="switchSection('home')">首页</a></li>
-                <li><a href="#" onclick="switchSection('about')">About</a></li>
-                <li><a href="#" onclick="switchSection('community')">对豆腐的评价</a></li>
-                <li><a href="#" onclick="switchSection('gallery')">无聊展示</a></li>
-                <li><a href="#" onclick="switchSection('contact')">不理解</a></li>
-            </ul>
-        </div>
+        <ul>
+            <li><a href="#" class="active" onclick="event.preventDefault(); switchSection('home')">首页</a></li>
+            <li><a href="#" onclick="event.preventDefault(); switchSection('community')">社区</a></li>
+            <li><a href="#" onclick="event.preventDefault(); switchSection('about')">关于</a></li>
+            <li><a href="#" onclick="event.preventDefault(); switchSection('contact')">联系我们</a></li>
+        </ul>
     </nav>
     <div class="main-content container">
         <section id="home" class="active">
             <h2>首页</h2>
-            <p>欢迎来到MCSP-Site，有不理解无聊写的</p>
-        </section>
-        <section id="about">
-            <h2>关于我们</h2>
-            <p>啥也没有，看啥看。</p>
+            <p>欢迎来到MCSP-Site首页</p>
+            <p>豆腐玩原神玩痿了</p>
         </section>
         <section id="community">
-            <h2>对豆腐的评价</h2>
-            <p>玩原神玩的</p>
+            <h2>社区</h2>
+            <p>欢迎来到社区页面！在这里你可以与其他原神爱好者互动。</p>
         </section>
-        <section id="gallery">
-            <h2>无聊展示</h2>
-            <p>我真的很无聊，孩子们。</p>
+        <section id="about">
+            <h2>关于</h2>
+            <p>这是关于页面，介绍本站的信息。</p>
         </section>
         <section id="contact">
-            <h2>不理解</h2>
-            <p>没有技术含量的造物</p>
+            <h2>联系我们</h2>
+            <p>这是联系我们页面。如果有任何问题，请随时联系。</p>
         </section>
     </div>
     <footer>
-        <p>&copy; 2024 MCSP-Site. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 MCSP-Site. All rights reserved.</p>
+        </div>
     </footer>
     <script>
-        function switchSection(sectionId) {
-            var sections = document.querySelectorAll('section');
-            var navLinks = document.querySelectorAll('nav a');
+        let menuOpen = false;
+
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            const overlay = document.querySelector('.overlay');
             
-            for (var i = 0; i < sections.length; i++) {
-                sections[i].style.display = 'none';
+            if (!menuOpen) {
+                nav.style.left = '0';
+                hamburger.classList.add('active');
+                overlay.style.display = 'block';
+            } else {
+                nav.style.left = '-250px';
+                hamburger.classList.remove('active');
+                overlay.style.display = 'none';
             }
-            for (var i = 0; i < navLinks.length; i++) {
-                navLinks[i].classList.remove('active');
-            }
-            
-            document.getElementById(sectionId).style.display = 'block';
-            document.querySelector('nav a[href="#' + sectionId + '"]').classList.add('active');
+            menuOpen = !menuOpen;
         }
+
+        function switchSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            document.getElementById(sectionId).classList.add('active');
+            closeMenu();
+        }
+
+        function closeMenu() {
+            if (menuOpen) {
+                toggleMenu();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (menuOpen) {
+                closeMenu();
+            }
+        });
     </script>
 </body>
 </html>
-<!-- 恭喜你发现这个 没有技术含量的网站 -->
+<!-- 恭喜你看到了这个彩蛋 -->
