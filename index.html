@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCSP-Site - 豆腐玩原神玩的</title>
+    <title>MCSP - Site - 东方绮梦</title>
+    <link rel="icon" href="https://img.picui.cn/free/2024/07/08/668bb3149ee26.png" type="image/x-icon">
+    <!-- 使用在线链接作为iOS设备的图标 -->
+    <link rel="apple-touch-icon" href="https://img.picui.cn/free/2024/07/08/668bb3149ee26.png">
     <style>
         body, h1, h2, p, ul {
             margin: 0;
@@ -25,7 +28,10 @@
         }
 
         header {
-            background: #333;
+            background-image: url('https://img.picui.cn/free/2024/07/08/668b85ad34e00.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
             color: #fff;
             padding: 20px 0;
             text-align: center;
@@ -34,6 +40,7 @@
         header h1 {
             margin: 0;
             font-size: 2rem;
+            color: #FFFFFF;
         }
 
         .hamburger {
@@ -93,10 +100,7 @@
             transition: background 0.3s;
         }
 
-        nav ul li a:hover {
-            background-color: #555;
-        }
-
+        nav ul li a:hover,
         nav ul li a.active {
             background-color: #555;
         }
@@ -138,6 +142,53 @@
             z-index: 1000;
         }
 
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #6c757d;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            outline: none;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: width 0.3s;
+            z-index: -1;
+        }
+
+        .button:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .button:hover::before {
+            width: 100%;
+        }
+
+        .button:active {
+            background-color: #4e555b;
+            transform: translateY(1px);
+        }
+
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -161,24 +212,35 @@
         <ul>
             <li><a href="#" class="active" onclick="event.preventDefault(); switchSection('home')">首页</a></li>
             <li><a href="#" onclick="event.preventDefault(); switchSection('community')">社区</a></li>
-            <li><a href="#" onclick="event.preventDefault(); switchSection('about')">关于</a></li>
-            <li><a href="#" onclick="event.preventDefault(); switchSection('contact')">联系我们</a></li>
+            <li><a href="#" onclick="event.preventDefault(); switchSection('about')">About</a></li>
+            <li><a href="#" onclick="event.preventDefault(); switchSection('contact')">Contact Us</a></li>
         </ul>
     </nav>
     <div class="main-content container">
+        <!-- 首页内容 -->
         <section id="home" class="active">
             <h2>首页</h2>
             <p>欢迎来到MCSP-Site首页</p>
-            <p>豆腐玩原神玩痿了</p>
+            <p>东方绮梦测试中。。。</p>
         </section>
+
+        <!-- 社区内容 -->
         <section id="community">
             <h2>社区</h2>
             <p>欢迎来到社区页面！在这里你可以与其他原神爱好者互动。</p>
+            <div class="buttons">
+                <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=..." class="button" target="_blank">加入QQ群</a>
+                <a href="https://b23.tv/pP6LEsF" class="button" target="_blank">访问B站</a>
+            </div>
         </section>
+
+        <!-- 关于内容 -->
         <section id="about">
             <h2>关于</h2>
             <p>这是关于页面，介绍本站的信息。</p>
         </section>
+
+        <!-- 联系我们内容 -->
         <section id="contact">
             <h2>联系我们</h2>
             <p>这是联系我们页面。如果有任何问题，请随时联系。</p>
@@ -186,7 +248,7 @@
     </div>
     <footer>
         <div class="container">
-            <p>&copy; 2024 MCSP-Site. All rights reserved.</p>
+            <p>© 2024 MCSP-Site. All rights reserved.</p>
         </div>
     </footer>
     <script>
@@ -240,4 +302,3 @@
     </script>
 </body>
 </html>
-<!-- 恭喜你看到了这个彩蛋 -->
